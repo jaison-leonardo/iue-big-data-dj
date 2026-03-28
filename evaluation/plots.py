@@ -3,8 +3,8 @@ from sklearn.metrics import ConfusionMatrixDisplay
 
 
 def plot_confusion_matrix(y_true, y_pred, labels, save_path, title="Confusion Matrix"):
-    fig, ax = plt.subplots(figsize=(7, 6))
-    disp = ConfusionMatrixDisplay.from_predictions(
+    _, ax = plt.subplots(figsize=(7, 6))
+    ConfusionMatrixDisplay.from_predictions(
         y_true,
         y_pred,
         display_labels=labels,
@@ -33,7 +33,7 @@ def plot_clustering(X, labels, title, save_path):
     g_r = X[:, 1] - X[:, 2]
 
     plt.figure()
-    scatter = plt.scatter(g_r, u_g, c=labels)
+    plt.scatter(g_r, u_g, c=labels)
     plt.xlabel("g - r")
     plt.ylabel("u - g")
     plt.title(title)

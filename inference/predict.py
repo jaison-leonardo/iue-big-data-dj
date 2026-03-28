@@ -72,7 +72,8 @@ if __name__ == "__main__":
             print("Modelo de clasificación cargado exitosamente.")
             
             # Datos simulados (deberían estar escalados si el modelo lo requiere)
-            sample_data = np.random.rand(1, 10) # Asumiendo 10 features
+            rng = np.random.default_rng(42)
+            sample_data = rng.random((1, 10)) # Asumiendo 10 features
             
             prediccion = predict_classification(classifier, sample_data)
             print(f"Predicción de clasificación: {prediccion}")

@@ -11,7 +11,7 @@ def run_kmeans(X, y_true=None, n_clusters=3):
     clusters = model.fit_predict(X_pca)
     
     results = {
-        "silhouette": silhouette_score(X_pca, clusters)
+        "silhouette": silhouette_score(X_pca, clusters, random_state=42)
     }
     if y_true is not None:
         results["ari"] = adjusted_rand_score(y_true, clusters)

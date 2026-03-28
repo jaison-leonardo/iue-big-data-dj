@@ -9,7 +9,7 @@ from sklearn.model_selection import GridSearchCV
 def train_regression_models(X_train, y_train):
     models = {
         "ridge": Ridge(alpha=1.0),
-        "hgbr": HistGradientBoostingRegressor(random_state=42),
+        "hgbr": HistGradientBoostingRegressor(learning_rate=0.1, random_state=42),
         "rf": get_rf_regressor()
     }
     trained = {}
@@ -21,7 +21,7 @@ def train_regression_models(X_train, y_train):
 def train_classification_models(X_train, y_train):
     models = {
         "knn": KNeighborsClassifier(n_neighbors=5, weights='distance'),
-        "hgbc": HistGradientBoostingClassifier(random_state=42),
+        "hgbc": HistGradientBoostingClassifier(learning_rate=0.1, random_state=42),
         "rf": get_rf_classifier()
     }
     trained = {}
@@ -51,6 +51,8 @@ def get_rf_classifier():
         n_estimators=150,
         max_depth=20,
         min_samples_split=10,
+        min_samples_leaf=2,
+        max_features="sqrt",
         random_state=42,
         n_jobs=-1
     )
@@ -60,6 +62,8 @@ def get_rf_regressor():
         n_estimators=150,
         max_depth=20,
         min_samples_split=10,
+        min_samples_leaf=2,
+        max_features="sqrt",
         random_state=42,
         n_jobs=-1
     )

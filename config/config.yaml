@@ -1,37 +1,32 @@
 project:
   name: "Parcial 1 - Big Data"
-  seed: 42
 
 data:
-  raw_path: "data/raw/"
-  processed_path: "data/processed/"
-  test_size: 0.2
-  random_state: 42
-
-model:
-  type: random_forest
-  n_estimators: 100
-  max_depth: 10
-
-  data:
-  input_path: "data/raw/sdss_sample.csv"
+  input_path: "data/raw/sdss_sample_pro.csv"
   processed_path: "data/processed/processed_data.csv"
   features_path: "data/features/features_data.csv"
 
 split:
   test_size: 0.3
   random_state: 42
-  stratify: true
 
 classification:
-  model: "knn"
-  n_neighbors: 5
-  features: ["u", "g", "r", "i", "z", "redshift"]
+  features: [
+    "u", "g", "r", "i", "z", "redshift",
+    "u_g", "g_r", "r_i", "i_z"
+  ]
+  target: "class"
 
 regression:
-  features: ["u", "g", "r", "i", "z"]
+  features: [
+    "u", "g", "r", "i", "z",
+    "u_g", "g_r", "r_i", "i_z"
+  ]
   target: "redshift"
 
 clustering:
-  features: ["u", "g", "r", "i", "z"]
+  features: [
+    "u", "g", "r", "i", "z", 
+    "u_g", "g_r", "r_i", "i_z"
+  ]
   n_clusters: 3
