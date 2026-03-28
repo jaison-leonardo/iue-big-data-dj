@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    container_name: jenkins_ml_pipeline
+    ports:
+      - "8080:8080" # El puerto para acceder a la interfaz web de Jenkins
+      - "50000:50000" # Puerto para agentes de Jenkins (estándar)
+    volumes:
+      - jenkins_data:/var/jenkins_home # Persistencia de datos (plugins, configuraciones, usuarios)
+
+volumes:
+  jenkins_data:

@@ -1,0 +1,12 @@
+FROM jenkins/jenkins:lts
+
+# Cambiamos a root para poder instalar paquetes en el sistema
+USER root
+
+# Actualizamos repositorios e instalamos Python 3, pip y la herramienta para entornos virtuales
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip python3-venv && \
+    rm -rf /var/lib/apt/lists/*
+
+# Aseguramos que el usuario vuelve a ser el usuario seguro jenkins
+USER jenkins
